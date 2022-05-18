@@ -1,12 +1,18 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        # Runtime: O(n)
-        # Space: O(n)
-        sum_map = {}
+        """
+        X + Y = target
+        Y = target - X
+        1. iterate through nums
+        2a. check if num in hash map, if so return indices
+        2. store into hash map the above equation if not
+        """
+        
+        pairs = {}
         
         for i in range(len(nums)):
-            if nums[i] in sum_map:
-                return [i, sum_map[nums[i]]]
+            if nums[i] not in pairs:
+                pairs[target - nums[i]] = i
             else:
-                sum_map[target - nums[i]] = i
+                return [pairs[nums[i]], i]
         
