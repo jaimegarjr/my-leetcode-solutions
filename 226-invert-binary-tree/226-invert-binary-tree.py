@@ -8,13 +8,12 @@ class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         """
         Runtime: O(n)
-        Space: O(n)
+        Space: O(n or h), worst case the tree is skewed
         """
         if root is None:
-            return None
+            return root
         
         root.left = self.invertTree(root.left)
         root.right = self.invertTree(root.right)
-        
         root.left, root.right = root.right, root.left
         return root
