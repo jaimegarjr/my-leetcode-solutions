@@ -4,7 +4,4 @@ class Solution:
         Runtime: O(nlogn)
         Space: O(n)
         """
-        s = sorted(s)
-        t = sorted(t)
-        
-        return s == t if True else False
+        return sorted(s) == sorted(t) if True else False
