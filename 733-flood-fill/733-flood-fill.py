@@ -5,20 +5,22 @@ class Solution:
         Space: O(n*m)
         """
         ROWS, COLS = len(image), len(image[0])
+        oldColor = image[sr][sc]
         
-        def dfs(image, sr, sc, curColor, newColor):
-            if sr < 0 or sc < 0 or sr >= ROWS or sc >= COLS or image[sr][sc] != curColor:
-                return image
-            elif image[sr][sc] == newColor:
-                return image
+        def dfs(sr, sc):
+            if (sr < 0 
+                or sc < 0 
+                or sr >= ROWS 
+                or sc >= COLS 
+                or image[sr][sc] != oldColor 
+                or image[sr][sc] == newColor):
+                return image # if out of bounds, not equal to color, or already is the color
             else:
-                oldColor = image[sr][sc]
-                image[sr][sc] = newColor
-                dfs(image, sr-1, sc, oldColor, newColor)
-                dfs(image, sr+1, sc, oldColor, newColor)
-                dfs(image, sr, sc-1, oldColor, newColor)
-                dfs(image, sr, sc+1, oldColor, newColor)
+                image[sr][sc] = newColor # reassign
+                dfs(sr-1, sc) # top
+                dfs(sr+1, sc) # bottom
+                dfs(sr, sc-1) # left
+                dfs(sr, sc+1) # right
         
-        dfs(image, sr, sc, image[sr][sc], newColor)
-        
+        dfs(sr, sc)
         return image
