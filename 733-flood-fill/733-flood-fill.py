@@ -6,14 +6,14 @@ class Solution:
         """
         ROWS, COLS = len(image), len(image[0])
         oldColor = image[sr][sc]
+        if oldColor == newColor: return image
         
         def dfs(sr, sc):
             if (sr < 0 
                 or sc < 0 
                 or sr >= ROWS 
                 or sc >= COLS 
-                or image[sr][sc] != oldColor 
-                or image[sr][sc] == newColor):
+                or image[sr][sc] != oldColor):
                 return image # if out of bounds, not equal to color, or already is the color
             else:
                 image[sr][sc] = newColor # reassign
