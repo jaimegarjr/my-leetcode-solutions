@@ -1,6 +1,9 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        
+        """
+        Runtime: O(n)
+        Space: O(1)
+        """
         total = 0
         maxSum = nums[0]
         
