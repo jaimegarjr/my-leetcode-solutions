@@ -9,7 +9,7 @@ class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         """
         Runtime: O(logn or h), height of the tree
-        Space: O(1)
+        Space: O(n), because this is a recursive solution
         """
         if root is None:
             return None
