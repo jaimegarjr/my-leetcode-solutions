@@ -10,20 +10,16 @@ class Solution:
         Runtime: O(n)
         Space: O(1)
         """
-        
         if head is None:
             return False
         
         slow = head
         fast = head.next
         
-        while slow.next and fast.next:
-            if slow == fast:
-                return True
+        while fast != slow:
+            if not fast or not fast.next:
+                return False
             slow = slow.next
             fast = fast.next.next
-            
-            if not fast:
-                break
         
-        return False
+        return True
