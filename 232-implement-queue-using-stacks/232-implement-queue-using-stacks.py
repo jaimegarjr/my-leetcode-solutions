@@ -1,19 +1,24 @@
 class MyQueue:
 
     def __init__(self):
-        self.q = collections.deque()
+        self.s1 = []
+        self.s2 = []
 
     def push(self, x: int) -> None:
-        self.q.append(x)
+        self.s1.append(x)
 
     def pop(self) -> int:
-        return self.q.popleft()
+        self.peek()
+        return self.s2.pop()
 
     def peek(self) -> int:
-        return self.q[0]
+        if not self.s2:
+            while self.s1:
+                self.s2.append(self.s1.pop())
+        return self.s2[-1]
 
     def empty(self) -> bool:
-        return not self.q if True else False
+        return not self.s1 and not self.s2
 
 
 # Your MyQueue object will be instantiated and called as such:
