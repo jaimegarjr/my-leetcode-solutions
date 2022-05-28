@@ -3,6 +3,10 @@
 
 class Solution:
     def firstBadVersion(self, n: int) -> int:
+        """
+        Runtime: O(logn)
+        Space: O(1)
+        """
         l, r = 1, n
         
         while l <= r:
