@@ -12,8 +12,6 @@ class Solution:
             else:
                 freq[c] += 1
         
-        print(freq)
-        
         for c in ransomNote:
             if c in freq:
                 freq[c] -= 1
