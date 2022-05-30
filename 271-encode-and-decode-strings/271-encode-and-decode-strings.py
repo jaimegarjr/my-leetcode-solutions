@@ -1,26 +1,25 @@
 class Codec:
     def encode(self, strs: List[str]) -> str:
-        """Encodes a list of strings to a single string.
         """
-        res = ""
-        for word in strs:
-            for c in word:
-                res += c
-            res += chr(257)
-        return res
+        Runtime: O(n)
+        Space: O(1)
+        Encodes a list of strings to a single string.
+        """
         
-
+        return ''.join(str(len(word)) + '-' + word for word in strs)
+        
+        
     def decode(self, s: str) -> List[str]:
         """Decodes a single string to a list of strings.
         """
-        res = []
-        string = ""
-        for c in s:
-            if c == chr(257):
-                res.append(string)
-                string = ""
-            else:
-                string += c
+        res, i = [], 0
+        while i < len(s):
+            j = i
+            while s[j] != "-":
+                j += 1
+            length = int(s[i:j])
+            res.append(s[j + 1 : j + length + 1])
+            i = j + length + 1
         return res
 
 
