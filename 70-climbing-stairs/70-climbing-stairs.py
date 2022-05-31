@@ -28,7 +28,7 @@ class Solution:
         """
         one, two = 1, 1
         
-        for i in range(n - 1, 0, -1):
+        for i in range(n - 1):
             tmp = one + two
             two = one
             one = tmp
