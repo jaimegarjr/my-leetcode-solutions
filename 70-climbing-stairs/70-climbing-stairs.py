@@ -1,5 +1,10 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
+        """
+        Recursion w/ Memoization
+        Runtime: O(n)
+        Space: O(n)
+        
         memo = [0] * (n + 1)
         
         def dfs(count):
@@ -14,3 +19,18 @@ class Solution:
             return memo[count]
             
         return dfs(0)
+        """
+        
+        """
+        DP - Bottom Up
+        Runtime: O(n)
+        Space: O(1)
+        """
+        one, two = 1, 1
+        
+        for i in range(n - 1, 0, -1):
+            tmp = one + two
+            two = one
+            one = tmp
+            
+        return one
