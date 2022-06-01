@@ -21,8 +21,23 @@ class Solution:
         """
         
         """
-        DP Optimized
+        DP Bottom Up
         """
+        if not nums:
+            return 0
+        
+        maxRobbedAmount = [None for _ in range(len(nums) + 1)]
+        N = len(nums)
+        
+        maxRobbedAmount[N], maxRobbedAmount[N - 1] = 0, nums[N - 1]
+        
+        for i in range(N - 2, -1, -1):
+            maxRobbedAmount[i] = max(maxRobbedAmount[i + 1], maxRobbedAmount[i + 2] + nums[i])
+        
+        return maxRobbedAmount[0]
+        
+        """
+        DP Optimized
         rob1, rob2 = 0, 0
         
         # [rob1, rob2, n, n + 1, ...]
@@ -32,4 +47,6 @@ class Solution:
             rob2 = temp
         
         return rob2
+        """
+        
         
