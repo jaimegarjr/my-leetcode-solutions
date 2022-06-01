@@ -22,7 +22,9 @@ class Solution:
         
         """
         DP Bottom Up
-        """
+        Runtime: O(n)
+        Space: O(n)
+        
         if not nums:
             return 0
         
@@ -35,9 +37,13 @@ class Solution:
             maxRobbedAmount[i] = max(maxRobbedAmount[i + 1], maxRobbedAmount[i + 2] + nums[i])
         
         return maxRobbedAmount[0]
+        """
         
         """
         DP Optimized
+        Runtime: O(n)
+        Space: O(1)
+        """
         rob1, rob2 = 0, 0
         
         # [rob1, rob2, n, n + 1, ...]
@@ -47,6 +53,5 @@ class Solution:
             rob2 = temp
         
         return rob2
-        """
         
         
