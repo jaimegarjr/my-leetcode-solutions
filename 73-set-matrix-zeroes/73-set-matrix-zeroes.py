@@ -3,6 +3,10 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
+        """
+        Runtime: O(n * m)
+        Space: O(n + m)
+        """
         ROWS, COLS = len(matrix), len(matrix[0])
         rows, cols = [0] * ROWS, [0] * COLS
         
