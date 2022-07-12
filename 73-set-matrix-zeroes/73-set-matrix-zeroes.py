@@ -3,6 +3,10 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
+        """
+        Runtime: O(nm)
+        Space: O(nm)
+        """
         ROWS, COLS = len(matrix), len(matrix[0])
         zeros = {}
     
