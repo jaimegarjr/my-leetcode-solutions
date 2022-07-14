@@ -12,9 +12,9 @@ class Solution:
             interval = intervals[i]
             
             if interval[0] < end:
+                # keeping the interval with the smaller end
+                end = min(end, interval[1]) 
                 res += 1
-                end = min(end, interval[1])
-                
             else:
                 end = interval[1]
         
