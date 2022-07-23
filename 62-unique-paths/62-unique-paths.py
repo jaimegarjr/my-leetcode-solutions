@@ -6,27 +6,24 @@ class Solution:
             return 1
         
         return self.uniquePaths(m-1, n) + self.uniquePaths(m, n-1)
-        """
         
-        """
         DP Soln
         Runtime: O(n * m)
         Space: O(n * m)
-        """
-#         dp = [[0] * n for _ in range(m)]
         
-#         for i in range(n):
-#             dp[m-1][i] = 1
-#         for i in range(m):
-#             dp[i][n-1] = 1
+        dp = [[0] * n for _ in range(m)]
         
-#         for x in range(m - 2, -1, -1):
-#             for y in range(n - 2, -1, -1):
-#                 dp[x][y] = dp[x + 1][y] + dp[x][y + 1]
+        for i in range(n):
+            dp[m-1][i] = 1
+        for i in range(m):
+            dp[i][n-1] = 1
         
-#         return dp[0][0]
+        for x in range(m - 2, -1, -1):
+            for y in range(n - 2, -1, -1):
+                dp[x][y] = dp[x + 1][y] + dp[x][y + 1]
         
-        """
+        return dp[0][0]
+
         DP Soln (NeetCode)
         Runtime: O(n * m)
         Space: O(n)
