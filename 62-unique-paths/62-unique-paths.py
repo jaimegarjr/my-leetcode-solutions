@@ -22,7 +22,6 @@ class Solution:
         
         for x in range(m - 2, -1, -1):
             for y in range(n - 2, -1, -1):
-                if dp[x][y] == 0:
-                    dp[x][y] = dp[x + 1][y] + dp[x][y + 1]
+                dp[x][y] = dp[x + 1][y] + dp[x][y + 1]
         
         return dp[0][0]
