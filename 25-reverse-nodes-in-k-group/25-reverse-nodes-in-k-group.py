@@ -6,20 +6,23 @@
 class Solution:
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         dummy = ListNode(0, head)
-        leftPrev, cur = dummy, head
+        groupPrev, cur = dummy, head
         
-        while self.getKth(leftPrev, k):
-            prev = None
-
+        while True:
+            kth = self.getKth(groupPrev, k)
+            if not kth:
+                break
+            groupNext = kth.next
+            
+            prev = kth.next
             for i in range(k):
                 tmp = cur.next
                 cur.next = prev
                 prev, cur = cur, tmp
             
-            leftPrev.next.next = cur
-            tmp = leftPrev.next
-            leftPrev.next = prev
-            leftPrev = tmp
+            tmp = groupPrev.next
+            groupPrev.next = kth
+            groupPrev = tmp
         
         return dummy.next
     
@@ -30,7 +33,4 @@ class Solution:
             tmp = tmp.next
             i += 1
             
-        if tmp:
-            return tmp
-        else:
-            return None
+        return tmp
