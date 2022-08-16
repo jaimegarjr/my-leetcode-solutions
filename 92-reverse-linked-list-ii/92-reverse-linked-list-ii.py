@@ -5,6 +5,9 @@
 #         self.next = next
 class Solution:
     def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+        # Runtime: O(n)
+        # Space: O(1)
+        
         dummy = ListNode(0, head)
         leftPrev, cur = dummy, head
         
@@ -24,18 +27,3 @@ class Solution:
         leftPrev.next = prev
         
         return dummy.next
-        
-    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if not head or not head.next:
-            return head
-        
-        cur = head
-        prev = None
-        
-        while cur:
-            tmp = cur.next
-            cur.next = prev
-            prev = cur
-            cur = tmp
-        
-        return prev
