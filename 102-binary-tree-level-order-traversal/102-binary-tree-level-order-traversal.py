@@ -11,7 +11,7 @@ class Solution:
         res = []
         
         if not root:
-            return None
+            return res
         
         q = collections.deque()
         q.append(root)
