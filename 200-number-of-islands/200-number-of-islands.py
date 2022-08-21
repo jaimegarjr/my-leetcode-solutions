@@ -1,5 +1,7 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
+        # Runtime: O(v+e)
+        # Space: O(n)
         ROWS, COLS = len(grid), len(grid[0])
         count = 0
         visited = set()
