@@ -13,20 +13,20 @@ class Solution:
         if not node:
             return node
         
-        created = {node.val: Node(node.val, [])}
+        created = {node: Node(node.val, [])}
         q = collections.deque()
         q.append(node)
         
         while q:
             cur = q.popleft()
-            curClone = created[cur.val]
+            curClone = created[cur]
 
             for nei in cur.neighbors:
-                if nei.val not in created:
-                    created[nei.val] = Node(nei.val, [])
+                if nei not in created:
+                    created[nei] = Node(nei.val, [])
                     q.append(nei)
                 
-                curClone.neighbors.append(created[nei.val])
+                curClone.neighbors.append(created[nei])
         
-        return created[node.val]
+        return created[node]
         
