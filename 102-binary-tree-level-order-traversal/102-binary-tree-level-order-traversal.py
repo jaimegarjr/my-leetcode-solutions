@@ -22,8 +22,7 @@ class Solution:
             
             for _ in range(levels):
                 node = q.popleft()
-                if node:
-                    level.append(node.val)
+                level.append(node.val)
                 
                 if node.left:
                     q.append(node.left)
