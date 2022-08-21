@@ -6,7 +6,8 @@
 #         self.right = right
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-        
+        # Runtime: O(s*t)
+        # Space: O(h or n)
         if not subRoot: return True
         if not root: return False
         
@@ -16,7 +17,6 @@ class Solution:
         
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         if not p and not q: return True
-        if not p or not q or p.val != q.val:
-            return False
+        if not p or not q or p.val != q.val: return False
         return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
         
