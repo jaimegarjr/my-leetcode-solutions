@@ -7,10 +7,23 @@
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         # Runtime: O(n) (v + e)
-        # Space: O(h), recursive
+        # Space: O(n), size of queue
+        depth = 0
         if not root:
-            return 0
+            return depth
         
-        maxLeftDepth = self.maxDepth(root.left)
-        maxRightDepth = self.maxDepth(root.right)
-        return max(maxLeftDepth, maxRightDepth) + 1
+        q = collections.deque()
+        q.append(root)
+        
+        while q:
+            levels = len(q)
+            for _ in range(levels):
+                node = q.popleft()
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+                
+            depth += 1
+        
+        return depth
