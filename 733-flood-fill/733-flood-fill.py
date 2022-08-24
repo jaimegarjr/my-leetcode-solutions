@@ -1,26 +1,31 @@
 class Solution:
-    def floodFill(self, image: List[List[int]], sr: int, sc: int, newColor: int) -> List[List[int]]:
-        """
-        Runtime: O(n*m)
-        Space: O(n*m)
-        """
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
         ROWS, COLS = len(image), len(image[0])
         oldColor = image[sr][sc]
-        if oldColor == newColor: return image
         
-        def dfs(sr, sc):
-            if (sr < 0 
-                or sc < 0 
-                or sr >= ROWS 
-                or sc >= COLS 
-                or image[sr][sc] != oldColor):
-                return image # if out of bounds, not equal to color, or already is the color
-            else:
-                image[sr][sc] = newColor # reassign
-                dfs(sr-1, sc) # top
-                dfs(sr+1, sc) # bottom
-                dfs(sr, sc-1) # left
-                dfs(sr, sc+1) # right
+        if oldColor == color:
+            return image
         
-        dfs(sr, sc)
+        def bfs(r, c):
+            q = collections.deque([(r, c)])
+            
+            while q:
+                row, col = q.popleft()
+                image[row][col] = color
+                
+                directions = [
+                    (-1, 0),
+                    (0, 1),
+                    (1, 0),
+                    (0, -1)
+                ]
+                for x, y in directions:
+                    dr = row + x
+                    dc = col + y
+                    if (dr in range(ROWS) and
+                       dc in range(COLS) and
+                       image[dr][dc] == oldColor):
+                        q.append((dr, dc))
+        
+        bfs(sr, sc)
         return image
