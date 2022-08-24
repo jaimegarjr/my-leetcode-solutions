@@ -6,10 +6,9 @@
 #         self.right = right
 class Solution:
     def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        """
-        :type root: TreeNode
-        :rtype: List[List[int]]
-        """
+        # Runtime: O(v+e)
+        # Space: O(v+e)
+        # DFS Alternative
         if root is None:
             return []
 
