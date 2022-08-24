@@ -5,7 +5,9 @@ class Solution:
         nums.sort()
         triplets = []
         
-        for i in range(len(nums)-2):
+        for i in range(len(nums)):
+            if i > 0 and nums[i] == nums[i-1]:
+                continue
             self.findTriplets(i, i + 1, len(nums)-1, triplets, nums)
             
         return triplets
@@ -14,13 +16,17 @@ class Solution:
     def findTriplets(self, i, l, r, triplets, nums):
         while l < r:
             triplet = [nums[i], nums[l], nums[r]]
-            curSum = sum(triplet)
+            curSum = nums[i] + nums[l] + nums[r]
             
-            if curSum == 0 and triplet not in triplets:
-                triplets.append(triplet)
-                l += 1
+            if curSum > 0:
+                r -= 1
             elif curSum < 0:
                 l += 1
+            
             else:
-                r -= 1
+                triplets.append([nums[i], nums[l], nums[r]])
+                l += 1
+                while nums[l] == nums[l - 1] and l < r:
+                    l += 1
+            
         return
