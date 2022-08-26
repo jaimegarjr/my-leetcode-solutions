@@ -7,6 +7,8 @@
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        # Runtime: O(n)
+        # Space: O(n or h)
         def dfs(node):
             if not node:
                 return None
