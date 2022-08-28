@@ -16,21 +16,15 @@ class Codec:
         
         res = []
         
-        q = collections.deque([root])
-        
-        while q:
-            size = len(q)
-            for _ in range(size):
-                node = q.popleft()
+        def dfs(node):
+            if not node:
+                res.append("null")
+                return 
+            res.append(str(node.val))
+            dfs(node.left)
+            dfs(node.right)
             
-                if not node:
-                    res.append("null")
-                    continue
-                
-                res.append(str(node.val))
-                q.append(node.left)
-                q.append(node.right)
-        
+        dfs(root)
         return ",".join(res)
         
 
@@ -41,30 +35,20 @@ class Codec:
         :rtype: TreeNode
         """
         nodes = data.split(",")
+        self.i = 0
         
-        if nodes[0] == "null":
-            return None
+        def dfs():
+            if nodes[self.i] == "null":
+                self.i += 1
+                return None
+            
+            node = TreeNode(int(nodes[self.i]))
+            self.i += 1
+            node.left = dfs()
+            node.right = dfs()
+            return node
         
-        root = TreeNode(int(nodes[0]))
-        nodes.pop(0)
-        q = collections.deque([root])
-        
-        while q:
-            size = len(q)
-            for _ in range(size):
-                node = q.popleft()
-
-                if nodes[0] != "null":
-                    node.left = TreeNode(int(nodes[0]))
-                    q.append(node.left)
-                nodes.pop(0)
-                
-                if nodes[0] != "null":
-                    node.right = TreeNode(int(nodes[0]))
-                    q.append(node.right)
-                nodes.pop(0)
-        
-        return root
+        return dfs()
 
 # Your Codec object will be instantiated and called as such:
 # ser = Codec()
