@@ -9,7 +9,7 @@ class Solution:
 
         freqMap = collections.Counter(filtered.split())
 
-        for key, val in freqMap.most_common(len(freqMap)):
+        for key, val in freqMap.most_common():
             if key in banned:
                 continue
             else:
