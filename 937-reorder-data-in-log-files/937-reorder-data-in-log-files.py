@@ -13,7 +13,5 @@ class Solution:
             else:
                 letterLogs.append(l)
 
-        letterLogs.sort(key=lambda x: x.split()[0])
-
-        letterLogs.sort(key=lambda x: x.split()[1:])
+        letterLogs.sort(key=lambda x: (x.split()[1:], x.split()[0]))
         return letterLogs + digitLogs
