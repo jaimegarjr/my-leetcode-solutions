@@ -1,6 +1,7 @@
 class Solution:
     def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
-        filtered = ""
+        filtered = ''
+
         for c in paragraph:
             if c.isalnum():
                 filtered += c.lower()
@@ -9,8 +10,8 @@ class Solution:
 
         freqMap = collections.Counter(filtered.split())
 
-        for key, val in freqMap.most_common():
-            if key in banned:
+        for word, freq in freqMap.most_common():
+            if word in banned:
                 continue
             else:
-                return key
+                return word
