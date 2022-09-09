@@ -11,14 +11,12 @@ class Solution:
             
             # determine if dip, update res if so
             if height[l] < leftMax:
-                side = min(leftMax, rightMax)
-                res += side - height[l]
+                res += leftMax - height[l]
             
             if l == r: break
             
             if height[r] < rightMax:
-                side = min(leftMax, rightMax)
-                res += side - height[r]
+                res += rightMax - height[r]
             
             # update pointers
             if leftMax < rightMax: 
