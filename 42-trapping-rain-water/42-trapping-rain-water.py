@@ -2,6 +2,7 @@ class Solution:
     def trap(self, height: List[int]) -> int:
         # Runtime: O(n)
         # Space: O(1)
+        if not height: return 0
         res = 0
         l, r = 0, len(height)-1
         leftMax, rightMax = 0, 0
@@ -21,7 +22,7 @@ class Solution:
             # update pointers
             if leftMax <= rightMax: 
                 l += 1
-            elif rightMax < leftMax: 
+            else: 
                 r -= 1
         
         return res
