@@ -1,5 +1,7 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
+        # Runtime: O(n)
+        # Space: O(1)
         res = 0
         l, r = 0, len(height)-1
         leftMax, rightMax = 0, 0
