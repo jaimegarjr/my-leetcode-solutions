@@ -10,13 +10,13 @@ class Solution:
             rightMax = max(rightMax, height[r])
             
             # determine if dip, update res if so
-            if height[l] < leftMax or height[l] < rightMax:
+            if height[l] < leftMax:
                 side = min(leftMax, rightMax)
                 res += side - height[l]
             
             if l == r: break
             
-            if height[r] < rightMax or height[r] < leftMax:
+            if height[r] < rightMax:
                 side = min(leftMax, rightMax)
                 res += side - height[r]
             
