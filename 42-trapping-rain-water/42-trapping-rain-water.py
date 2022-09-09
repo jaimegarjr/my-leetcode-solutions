@@ -21,12 +21,9 @@ class Solution:
                 res += rightMax - height[r]
             
             # update pointers
-            if leftMax < rightMax: 
+            if leftMax <= rightMax: 
                 l += 1
             elif rightMax < leftMax: 
-                r -= 1
-            else: 
-                l += 1
                 r -= 1
         
         return res
