@@ -26,19 +26,17 @@ class Solution:
 
 
 def getKth(node, k):
-    if not node:
-        return None
     tmp = node
+
     for _ in range(k):
         if not tmp:
             break
         tmp = tmp.next
+
     return tmp
 
 
 def reverseList(node, k):
-    if not node:
-        return None
     cur, prev = node, None
 
     while cur != k:
