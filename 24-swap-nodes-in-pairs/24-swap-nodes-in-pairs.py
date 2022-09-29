@@ -25,8 +25,6 @@ class Solution:
 
 
 def getKth(node, k):
-    if not node:
-        return None
     tmp = node
     for _ in range(k):
         if not tmp:
