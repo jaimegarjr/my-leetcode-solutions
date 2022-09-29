@@ -29,7 +29,8 @@ def getKth(node, k):
         return None
     tmp = node
     for _ in range(k):
-        if not tmp: break
+        if not tmp:
+            break
         tmp = tmp.next
     return tmp
 
