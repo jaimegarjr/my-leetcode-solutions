@@ -5,25 +5,46 @@
 #         self.next = next
 class Solution:
     def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
-        # Runtime: O(n)
-        # Space: O(1)
-        
-        dummy = ListNode(0, head)
-        leftPrev, cur = dummy, head
-        
-        # finding beg list
-        for i in range(left - 1):
-            leftPrev, cur = cur, cur.next
-        
-        # reversal
-        prev = None
-        for i in range(right - left + 1):
-            tmp = cur.next
-            cur.next = prev
-            prev, cur = cur, tmp
-        
-        # clean up
-        leftPrev.next.next = cur
-        leftPrev.next = prev
-        
+        """
+        Reverses adjacent nodes in a list
+        head: Node
+        rtype: Node
+        """
+        dummy = ListNode(0, next=head)
+        d = dummy
+
+        for _ in range(left - 1):
+            d = d.next
+
+        k = getKth(d.next, right - left + 1)
+        p = reverseList(d.next, k)
+        newD = d.next
+        newD.next = k
+        d.next = p
+
         return dummy.next
+
+
+def getKth(node, k):
+    if not node:
+        return None
+    tmp = node
+    for _ in range(k):
+        if not tmp:
+            break
+        tmp = tmp.next
+    return tmp
+
+
+def reverseList(node, k):
+    if not node:
+        return None
+    cur, prev = node, None
+
+    while cur != k:
+        tmp = cur.next
+        cur.next = prev
+        prev = cur
+        cur = tmp
+
+    return prev
