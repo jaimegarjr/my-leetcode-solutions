@@ -35,8 +35,6 @@ def getKth(node, k):
 
 
 def reverseList(node, k):
-    if not node:
-        return None
     cur, prev = node, None
 
     while cur != k:
