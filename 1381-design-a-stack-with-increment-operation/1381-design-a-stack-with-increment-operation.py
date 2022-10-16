@@ -8,9 +8,8 @@ class CustomStack:
     def push(self, x: int) -> None:
         if len(self.stack) == self.maxSize:
             return None
-        else:
-            self.stack.append(x)
-            self.inc.append(0)
+        self.stack.append(x)
+        self.inc.append(0)
 
     def pop(self) -> int:
         if not self.inc:
@@ -21,7 +20,7 @@ class CustomStack:
 
     def increment(self, k: int, val: int) -> None:
         if self.inc:
-            self.inc[min(k-1, len(self.stack)-1)] += val
+            self.inc[min(k, len(self.stack)) - 1] += val
         
 
 
