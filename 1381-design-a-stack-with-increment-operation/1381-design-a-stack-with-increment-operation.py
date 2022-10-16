@@ -2,25 +2,22 @@ class CustomStack:
 
     def __init__(self, maxSize: int):
         self.maxSize = maxSize
-        self.size = 0
         self.stack = deque()
 
     def push(self, x: int) -> None:
-        if self.size == self.maxSize:
+        if len(self.stack) == self.maxSize:
             return None
         else:
             self.stack.append(x)
-            self.size += 1
 
     def pop(self) -> int:
-        if self.size == 0:
+        if len(self.stack) == 0:
             return -1
         else:
-            self.size -= 1
             return self.stack.pop()
 
     def increment(self, k: int, val: int) -> None:
-        for i in range(min(k, self.size)):
+        for i in range(min(k, len(self.stack))):
             self.stack[i] += val
         
 
