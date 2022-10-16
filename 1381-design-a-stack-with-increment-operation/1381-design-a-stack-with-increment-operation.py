@@ -2,7 +2,7 @@ class CustomStack:
 
     def __init__(self, maxSize: int):
         self.maxSize = maxSize
-        self.stack = deque()
+        self.stack = []
 
     def push(self, x: int) -> None:
         if len(self.stack) == self.maxSize:
