@@ -20,8 +20,7 @@ class CustomStack:
             return self.stack.pop()
 
     def increment(self, k: int, val: int) -> None:
-        loop = min(k, self.size)
-        for i in range(loop):
+        for i in range(min(k, self.size)):
             self.stack[i] += val
         
 
