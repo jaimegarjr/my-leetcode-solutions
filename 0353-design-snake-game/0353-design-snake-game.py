@@ -17,15 +17,15 @@ class SnakeGame:
         nr, nc = self.directions[direction]
         newHead = [dr + nr, dc + nc]
         
-        if newHead in self.snakePoints:
-            if self.snakePoints[-1] != newHead:
-                return -1
-        
         if (dr + nr >= self.ROWS or
             dr + nr < 0 or
             dc + nc >= self.COLS or 
             dc + nc < 0):
             return -1
+        
+        if newHead in self.snakePoints:
+            if self.snakePoints[-1] != newHead:
+                return -1
         
         self.snakePoints.appendleft(newHead)
         if (self.food and newHead == self.food[0]):
