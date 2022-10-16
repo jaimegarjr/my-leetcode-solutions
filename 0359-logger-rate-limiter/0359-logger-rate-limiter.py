@@ -4,6 +4,10 @@ class Logger:
         self.logs = {}
 
     def shouldPrintMessage(self, timestamp: int, message: str) -> bool:
+        """
+        Runtime: O(1)
+        Space: O(n)
+        """
         if message not in self.logs:
             self.logs[message] = timestamp
             return True
