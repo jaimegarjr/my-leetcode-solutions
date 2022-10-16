@@ -1,14 +1,10 @@
 class SnakeGame:
 
     def __init__(self, width: int, height: int, food: List[List[int]]):
-        self.COLS = width
-        self.ROWS = height
-        self.food = food[1:]
-        self.curSnakePos = [0, 0]
-        self.curFoodPos = food[0]
-        self.snakeLen = 1
+        self.COLS, self.ROWS = width, height
+        self.snakePoints = collections.deque([[0, 0]])
+        self.food = food
         self.score = 0
-        self.snakeBodyPoints = collections.deque([[0, 0]])
         self.directions = {
             'R': [0, 1],
             'L': [0, -1],
@@ -17,31 +13,28 @@ class SnakeGame:
         }
 
     def move(self, direction: str) -> int:
-        dr, dc = self.snakeBodyPoints[0]
+        dr, dc = self.snakePoints[0]
         nr, nc = self.directions[direction]
         newHead = [dr + nr, dc + nc]
         
-        if newHead in self.snakeBodyPoints:
-            if self.snakeBodyPoints[-1] != newHead:
+        if newHead in self.snakePoints:
+            if self.snakePoints[-1] != newHead:
                 return -1
         
-        if (dr + nr < self.ROWS and
-            dr + nr >= 0 and
-            dc + nc < self.COLS and 
-            dc + nc >= 0):
-            self.snakeBodyPoints.appendleft(newHead)
-            
-            if (newHead == self.curFoodPos):
-                self.snakeLen += 1
-                self.score += 1
-                self.curFoodPos = self.food[0] if self.food else [-1, -1]
-                self.food = self.food[1:]
-            else:
-                self.snakeBodyPoints.pop()
-            
-            return self.score
-        else:
+        if (dr + nr >= self.ROWS or
+            dr + nr < 0 or
+            dc + nc >= self.COLS or 
+            dc + nc < 0):
             return -1
+        
+        self.snakePoints.appendleft(newHead)
+        if (self.food and newHead == self.food[0]):
+            self.food.pop(0)
+            self.score += 1
+        else:
+            self.snakePoints.pop()
+
+        return self.score
         
 
 # Your SnakeGame object will be instantiated and called as such:
