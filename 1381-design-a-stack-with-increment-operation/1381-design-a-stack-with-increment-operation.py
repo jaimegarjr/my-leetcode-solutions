@@ -6,7 +6,7 @@ class CustomStack:
         self.inc = []
 
     def push(self, x: int) -> None:
-        if len(self.stack) == self.maxSize:
+        if len(self.inc) == self.maxSize:
             return None
         self.stack.append(x)
         self.inc.append(0)
