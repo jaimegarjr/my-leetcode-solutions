@@ -14,17 +14,18 @@ class Solution:
         
         return res
         """
-        left, right = 0, n
+        left, right = 1, n
+        res = 0
         
         while left <= right:
-            k = (left + right) // 2
-            cur = (k * (k + 1)) // 2
+            mid = (left + right) // 2
+            coins = (mid * (mid + 1)) // 2
             
-            if cur == n:
-                return k
-            if cur < n:
-                left = k + 1
+            if coins == n:
+                return mid
+            if coins < n:
+                left = mid + 1
             else:
-                right = k - 1
+                right = mid - 1
         
         return right
