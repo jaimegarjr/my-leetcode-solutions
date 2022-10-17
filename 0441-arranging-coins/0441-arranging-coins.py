@@ -22,4 +22,4 @@ class Solution:
                 res = max(mid, res)
                 left = mid + 1
         
-        return right
+        return res
