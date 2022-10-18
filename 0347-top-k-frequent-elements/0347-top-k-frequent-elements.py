@@ -5,14 +5,11 @@ class Solution:
         Runtime: O(nlogn)
         Space: O(n)
         """
-        freq = {}
+        freq = defaultdict(int)
         res = []
 
         for n in nums:
-            if n in freq:
-                freq[n] += 1
-            else:
-                freq[n] = 1
+            freq[n] += 1
 
         sortedRes = sorted(freq.keys(), key=lambda x: freq[x], reverse=True)
 
