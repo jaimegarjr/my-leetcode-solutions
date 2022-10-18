@@ -11,9 +11,6 @@ class Solution:
         for n in nums:
             freq[n] += 1
 
-        sortedRes = sorted(freq.keys(), key=lambda x: freq[x], reverse=True)
+        res = sorted(freq.keys(), key=lambda x: freq[x], reverse=True)
 
-        for i in range(k):
-            res.append(sortedRes[i])
-
-        return res
+        return res[:k]
