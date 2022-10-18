@@ -6,6 +6,7 @@ class Solution:
         Space: O(n)
         """
         freq = {}
+        res = []
 
         for n in nums:
             if n in freq:
@@ -13,11 +14,9 @@ class Solution:
             else:
                 freq[n] = 1
 
-        keys = freq.keys()
-        sortedArr = sorted(keys, key=lambda x: freq[x], reverse=True)
-        res = []
+        sortedRes = sorted(freq.keys(), key=lambda x: freq[x], reverse=True)
 
         for i in range(k):
-            res.append(sortedArr[i])
+            res.append(sortedRes[i])
 
         return res
