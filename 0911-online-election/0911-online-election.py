@@ -1,6 +1,10 @@
 class TopVotedCandidate:
 
     def __init__(self, persons: List[int], times: List[int]):
+        """
+        Runtime: O(n)
+        Space: O(n)
+        """
         self.persons, self.times = persons, times
         self.leads, lead, counter = [], -1, defaultdict(int)
         
@@ -19,10 +23,14 @@ class TopVotedCandidate:
                 l = m + 1
             else:
                 r = m - 1
-        return l
+        return l - 1
     
     def q(self, t: int) -> int:
-        return self.leads[bisect.bisect(self.times, t) - 1]
+        """
+        Runtime: O(logn)
+        Space: O(1)
+        """
+        return self.leads[self.findRecentVote(self.times, t)]
 
 
 # Your TopVotedCandidate object will be instantiated and called as such:
