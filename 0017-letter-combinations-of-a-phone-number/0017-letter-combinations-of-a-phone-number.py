@@ -1,5 +1,10 @@
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
+        """
+        Gets all the keypad letter combinations of a given num string 
+        Runtime: O(4^n * n)
+        Space: O(n)
+        """
         if not digits:
             return []
 
