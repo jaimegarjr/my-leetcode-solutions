@@ -7,15 +7,15 @@ class Solution:
         """
         res = []
 
-        def dfs(nums, perm):
+        def backtrack(nums, perm):
             if not nums:
                 res.append(perm[:])
 
             for i in range(len(nums)):
                 newN = nums[0:i] + nums[i+1:]
                 perm.append(nums[i])
-                dfs(newN, perm)
+                backtrack(newN, perm)
                 perm.pop()
 
-        dfs(nums, [])
+        backtrack(nums, [])
         return res
