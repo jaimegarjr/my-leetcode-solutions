@@ -1,5 +1,10 @@
 class Solution:
     def findTheCity(self, n: int, edges: List[List[int]], distanceThreshold: int) -> int:
+        """
+        Returns the city with the least amount of cities that are reachable with distance less than threshold
+        Runtime: O(v*elogv), dijkstras for each node v, where dijkstras runtime is elogv
+        Space: O(v+e)
+        """
         graph = {i:[] for i in range(n)}
         
         for u, v, wt in edges:
