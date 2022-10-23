@@ -5,9 +5,6 @@ class Solution:
         Runtime: O(4^n * n)
         Space: O(n)
         """
-        if not digits:
-            return []
-
         res = []
         numToLetter = {
             "2": ["a", "b", "c"],
@@ -31,5 +28,6 @@ class Solution:
                 backtrack(digits[1:], comb)
                 comb.pop()
 
-        backtrack(digits, [])
+        if digits:
+            backtrack(digits, [])
         return res
