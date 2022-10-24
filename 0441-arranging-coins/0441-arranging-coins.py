@@ -4,7 +4,7 @@ class Solution:
         Runtime: O(logn)
         Space: O(1)
         """
-        l, r = 0, n
+        l, r = 1, n
         res = 0
         
         while l <= r:
