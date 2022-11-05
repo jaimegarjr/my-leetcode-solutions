@@ -2,36 +2,32 @@ class Solution:
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
         """
         Returns the max time to send a signal to all nodes from node k
-        Runtime: O(v+elogn)
+        Runtime: O(elogv)
         Space: O(v+e)
         """
         # build graph
+        visited = set()
         graph = {i: [] for i in range(1, n+1)}
 
-        for t in times:
-            u, v, wt = t
-            graph[u].append([v, wt])
+        for u, v, wt in times:
+            graph[u].append((v, wt))
 
-        def dijkstras(k):
-            index = k - 1
-            dist = [float('inf')] * n
-            dist[index] = 0
-            heap = []
-            heapq.heappush(heap, (0, k))
+        def dijkstrasAlgo(k):
+            t = 0
+            minHeap = [(0, k)]
 
-            while heap:
-                dis, node = heapq.heappop(heap)
+            while minHeap:
+                w1, n1 = heapq.heappop(minHeap)
+                if n1 in visited:
+                    continue
+                visited.add(n1)
+                t = max(t, w1)
 
-                for adj in graph[node]:
-                    adj_c, adj_d = adj
-                    if adj_d + dis < dist[adj_c - 1]:
-                        dist[adj_c - 1] = adj_d + dis
-                        heapq.heappush(heap, (dist[adj_c - 1], adj_c))
+                for n2, w2 in graph[n1]:
+                    if n2 not in visited:
+                        heapq.heappush(minHeap, (w1 + w2, n2))
 
-            return dist
+            return t
 
-        distances = dijkstras(k)
-        if max(distances) == float('inf'):
-            return -1
-        else:
-            return max(distances)
+        maxTime = dijkstrasAlgo(k)
+        return maxTime if len(visited) == n else -1
