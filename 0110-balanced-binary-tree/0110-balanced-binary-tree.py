@@ -18,7 +18,7 @@ class Solution:
 
             leftStatus, leftHeight = dfs(node.left)
             rightStatus, rightHeight = dfs(node.right)
-            
+
             if (leftStatus and rightStatus) and (abs(leftHeight - rightHeight) <= 1):
                 return (True, max(leftHeight, rightHeight) + 1)
 
