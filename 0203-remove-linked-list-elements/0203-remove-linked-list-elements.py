@@ -9,8 +9,8 @@ class Solution:
         Runtime: O(n)
         Space: O(1)
         """
-        dummy = ListNode(-1)
-        dummy.next = head
+        dummy = ListNode(-1, next=head)
+        
         trav = dummy
         while trav.next:
             if trav.next.val == val:
